@@ -1679,3 +1679,34 @@ h1 {
 
 .contact-button.whatsapp svg { color: var(--leaf); width: 22px; height: 22px; }
 .contact-button.instagram-link svg { color: var(--paper); width: 22px; height: 22px; }
+
+/* ---- Justified text for all body content ---- */
+.hero-text,
+.founder-cinema-copy p,
+.founder-copy > p,
+.founder-quote,
+.collection-card p,
+.contact-headline p,
+.address-strip p {
+  text-align: justify;
+}
+
+/* ---- Founder name block: prelude + name together, no big gap ---- */
+.founder-name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 1rem;
+}
+
+.founder-name-block .founder-prelude {
+  margin-bottom: 0.1rem;
+}
+
+.founder-name-block h2 {
+  margin-bottom: 0;
+}
+
+/* ---- Coloured contact card icons ---- */
+.contact-button.whatsapp svg { width: 24px; height: 24px; }
+.contact-button.instagram-link svg { width: 24px; height: 24px; }
