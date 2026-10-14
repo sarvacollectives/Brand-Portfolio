@@ -1831,3 +1831,186 @@ h1 {
     font-size: clamp(1rem, 4vw, 1.4rem);
   }
 }
+
+/* ================================================
+   JUSTIFY: descriptive paragraphs only
+   ================================================ */
+.hero-text,
+.founder-cinema-copy p:last-child,
+.founder-copy > p,
+.founder-quote,
+.collection-card > .collection-copy > p,
+.contact-headline p:last-child {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ================================================
+   FOUNDER: prelude + name on same line
+   ================================================ */
+.founder-name-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.founder-prelude-inline {
+  color: var(--plum);
+  font-family: var(--font-collection);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.founder-name-block h2#founder-title {
+  margin: 0;
+  line-height: 0.85;
+}
+
+/* ================================================
+   LOCATION CARD: modern redesign
+   ================================================ */
+.location-card {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.2rem;
+  border: 1px solid rgba(93, 19, 108, 0.2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(93, 19, 108, 0.06) 0%, rgba(216, 165, 54, 0.08) 50%, rgba(255, 248, 239, 0.9) 100%);
+  backdrop-filter: blur(8px);
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+
+.location-card:hover {
+  box-shadow: 0 1rem 3rem rgba(93, 19, 108, 0.12);
+  transform: translateY(-2px);
+}
+
+.location-card-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.6rem 2rem;
+}
+
+.location-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.location-label {
+  color: var(--gold);
+  font-family: Manrope, Inter, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.location-name {
+  margin: 0;
+  color: var(--plum);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.location-address {
+  margin: 0;
+  color: rgba(23, 16, 22, 0.78);
+  font-family: var(--font-contact);
+  font-size: clamp(0.88rem, 1.6vw, 1.05rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.location-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.location-pin-wrap {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(93, 19, 108, 0.22);
+  border-radius: 50%;
+  color: var(--plum);
+  background: rgba(93, 19, 108, 0.06);
+}
+
+.location-decoration {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.location-decoration span {
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--plum), var(--gold));
+  animation: meterPulse 2s ease-in-out infinite;
+}
+
+.location-decoration span:nth-child(1) { width: 2rem; }
+.location-decoration span:nth-child(2) { width: 1.3rem; animation-delay: -600ms; }
+.location-decoration span:nth-child(3) { width: 1.7rem; animation-delay: -1200ms; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .location-card-inner {
+    padding: 1.2rem 1.2rem;
+    gap: 1rem;
+  }
+
+  .location-pin-wrap {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .location-pin-wrap svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .founder-name-block {
+    gap: 0.3rem 0.5rem;
+  }
+
+  .founder-prelude-inline {
+    font-size: clamp(1rem, 3.5vw, 1.6rem);
+  }
+
+  .founder-name-block h2#founder-title {
+    font-size: clamp(2.4rem, 10vw, 4rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .location-card-inner {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .location-card-right {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
