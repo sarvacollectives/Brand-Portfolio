@@ -7,6 +7,7 @@ let particles = [];
 let width = 0;
 let height = 0;
 let tick = 0;
+let frameCount = 0;
 
 function resize() {
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -18,7 +19,20 @@ function resize() {
   canvas.style.height = `${height}px`;
   ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-  const count = Math.min(95, Math.max(42, Math.floor((width * height) / 17000)));
+  // Disable canvas on very small devices
+  if (width < 480) {
+    canvas.style.display = 'none';
+    return;
+  } else {
+    canvas.style.display = 'block';
+  }
+
+  // Mobile optimization: reduce particle count
+  const isMobile = width < 768;
+  const count = isMobile
+    ? Math.min(45, Math.max(25, Math.floor((width * height) / 28000)))
+    : Math.min(95, Math.max(42, Math.floor((width * height) / 17000)));
+
   particles = Array.from({ length: count }, (_, index) => ({
     x: (index * 97) % width,
     y: (index * 151) % height,
@@ -29,6 +43,23 @@ function resize() {
 
 function drawField() {
   tick += 0.006;
+  frameCount++;
+
+  // Mobile optimization: throttle to every other frame (30fps)
+  const isMobile = window.innerWidth < 768;
+  const skipFrames = isMobile ? 1 : 0;
+  
+  if (skipFrames > 0 && frameCount % (skipFrames + 1) !== 0) {
+    requestAnimationFrame(drawField);
+    return;
+  }
+
+  // Don't draw if canvas is hidden
+  if (canvas.style.display === 'none') {
+    requestAnimationFrame(drawField);
+    return;
+  }
+
   ctx.clearRect(0, 0, width, height);
   ctx.globalCompositeOperation = "source-over";
 
@@ -123,6 +154,11 @@ function projectMotion() {
 }
 
 function initTiltCards() {
+  // Disable tilt effects on mobile and touch devices
+  if (window.innerWidth < 768 || 'ontouchstart' in window) {
+    return;
+  }
+
   document.querySelectorAll("[data-tilt]").forEach((card) => {
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
