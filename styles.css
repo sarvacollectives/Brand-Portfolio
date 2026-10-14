@@ -1710,3 +1710,124 @@ h1 {
 /* ---- Coloured contact card icons ---- */
 .contact-button.whatsapp svg { width: 24px; height: 24px; }
 .contact-button.instagram-link svg { width: 24px; height: 24px; }
+
+/* ================================================
+   GLOBAL: Icon + text spacing in buttons
+   ================================================ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-button {
+  display: flex;
+  align-items: flex-start;
+}
+
+.contact-button .btn-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ================================================
+   GLOBAL: Justified text — desktop + mobile
+   ================================================ */
+.hero-text,
+.intro p,
+.founder-cinema-copy p,
+.founder-copy > p,
+.founder-quote,
+.collection-card p,
+.contact-headline p,
+.address-strip p {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ================================================
+   GLOBAL: Founder name block — tight grouping
+   ================================================ */
+.founder-name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 1rem;
+}
+
+.founder-name-block .founder-prelude {
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.founder-name-block h2#founder-title {
+  margin-top: 0.1rem;
+  margin-bottom: 0;
+  line-height: 0.82;
+}
+
+/* ================================================
+   MOBILE overrides (768px)
+   ================================================ */
+@media (max-width: 768px) {
+  .hero-text,
+  .intro p,
+  .founder-cinema-copy p,
+  .founder-copy > p,
+  .founder-quote,
+  .collection-card p,
+  .contact-headline p,
+  .address-strip p {
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .founder-name-block {
+    gap: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .founder-name-block .founder-prelude {
+    font-size: clamp(1.1rem, 4vw, 1.6rem);
+    margin-bottom: 0;
+  }
+
+  .founder-name-block h2#founder-title {
+    font-size: clamp(2.4rem, 10vw, 4rem);
+    margin-top: 0;
+    line-height: 0.9;
+  }
+
+  /* Button icon+text spacing on mobile */
+  .button {
+    gap: 0.45rem;
+    font-size: 0.88rem;
+  }
+
+  .button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Contact button icons on mobile */
+  .contact-button.whatsapp svg,
+  .contact-button.instagram-link svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ================================================
+   SMALL MOBILE (480px)
+   ================================================ */
+@media (max-width: 480px) {
+  .founder-name-block h2#founder-title {
+    font-size: clamp(2.2rem, 12vw, 3.5rem);
+  }
+
+  .founder-name-block .founder-prelude {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+}
